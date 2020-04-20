@@ -1,4 +1,4 @@
 # Development
 
-* [Architecture](Architecture.md)
+* [Architecture](Architecture/README.md)
 * [Code structure](CodeStructure.md)
