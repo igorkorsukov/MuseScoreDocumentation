@@ -26,7 +26,7 @@ There are a number of Windows installers on this page - make sure it is the __On
 
 Run the installer and install Qt in `C:\Qt`. You just need the Qt libraries for MinGW 5.3.0 and the MinGW 5.3.0 toolchain (or those for MinGW 7.3.0
 
-![Qt install](WindowsMinGW_Qt_install_.png)
+![Qt install](WindowsMinGW_Qt_install.png)
 
 (optional) Add the following directories to your `%PATH%`
 
