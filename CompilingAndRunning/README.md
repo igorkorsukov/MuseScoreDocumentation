@@ -4,7 +4,10 @@ _Note to editors: Please do not duplicate information on this page in the specif
 
 This generic guide covers the steps to build MuseScore that are the same on all platforms. See the platform-specific guides for details that only apply to your platform.
 
-* [Windows](WindowsCompiling.md)
+* Windows
+  * [Windows - MinGW](WindowsMinGW_Compiling.md)
+  * [Windows - Visual Studio](WindowsVS_Compiling.md)
+  * [Windows - MSVC with Qt Creator](WindowsMsvcQtc_Compiling.md)
 * [Mac](MacCompiling.md)
 * [Linux & BSD](LinuxCompiling.md)
 
