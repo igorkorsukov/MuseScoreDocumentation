@@ -4,9 +4,16 @@ To keep the source consistent, readable, modifiable and easy to merge, we use a 
 
 MuseScore code style and conventions are based on the [Qt code style](https://wiki.qt.io/Qt_Coding_Style) and [conventions](https://wiki.qt.io/Coding_Conventions), but there are some differences.
 
-## Coding Style
-
 * [C++](#c++)
+  * [Indentation](#indentation)
+  * [Namespace](#namespace)
+  * [Header and implementation](#header_and_implementation)
+  * [Declaring variables](#declaring_variables)
+  * [Whitespace](#whitespace)
+  * [Braces](#braces)
+  * [Parentheses](#parentheses)
+  * [Line breaks](#line_breaks)
+  * [General exceptions](#general_exceptions)
 * [Qml](#qml)
 * [CMake](#cmake)
 
@@ -16,6 +23,92 @@ MuseScore code style and conventions are based on the [Qt code style](https://wi
 
 * 4 spaces are used for indentation
 * Spaces, not tabs!
+
+### Namespace
+
+* All namespaces must be child to the global namespace `mu`
+* Namespaces names must be lowercase  so they can be easily distinguished from class names
+
+```C++
+ // Wrong
+ namespace Cool {
+     ...
+ }
+
+ // Correct
+ namespace mu::cool {
+     ...
+ }
+```
+
+### Header and implementation
+
+* Header files have the extension `.h`, files implementation `.cpp`
+* Each header and implementation file must have a license text at the top
+* The header file must have a guard named `MU_{MODULE}_{CLASSNAME}_H`
+* Only declaration should be in the header files, avoid placing the implementation in header files
+
+The class declaration should be in this order:  
+
+1. licence
+2. guard
+3. includes
+4. forward declarations
+5. namespace
+6. class declaration
+7. Qt macro (Q_OBJECT, Q_PROPERTY, Q_ENUMS...)
+8. public methods (first constructor and destructor if they public)
+9. public slots
+10. signals
+11. private slots
+12. private methods
+13. private members
+
+```C++
+
+ // Correct
+{LICENCE}
+
+#ifndef MU_COOL_RECT_H
+#define MU_COOL_RECT_H
+
+#include <QObject>
+
+class QRect;
+
+namespace mu::cool {
+
+class Rect : public QObject
+{
+    Q_OBJECT
+
+public:
+    Rect(QObject* parent = nullptr);
+    ~Rect();
+
+    int width() const;
+    int height() const;
+
+    int square() const;
+
+public slots:
+    void setWidth(int w);
+    void setHeight(int h);
+
+signals:
+    void squareChanged(int sq);
+
+private:
+    int calcSquare(int w, int h) const;
+
+    QRect _rect;
+};
+
+}
+
+#endif // MU_COOL_RECT_H
+
+```
 
 ### Declaring variables
 
@@ -60,7 +153,8 @@ MuseScore code style and conventions are based on the [Qt code style](https://wi
 
 * Classes and structures always start with an upper-case letter.
 * Acronyms are camel-cased (e.g. XmlReader, not XMLReader).
-* Data members of classes are named like ordinary nonmember variables, but with a prefix underscore (__different from Qt__)
+* Data members of classes are named like ordinary nonmember variables, but with a prefix underscore (__different from Qt__).
+* Public members of struct (POD) are named like ordinary nonmember variables, with out any prefix.
 
 ```C++
  // Wrong
@@ -244,7 +338,8 @@ MuseScore code style and conventions are based on the [Qt code style](https://wi
 
 In general, the same style as for C++
 
-* Property names as well as C ++ variable names, for "private" properties you need to add an underscore suffix
+* Property names as well as C ++ variable names
+* Private property must be a separate object
 
 ```javasctipt
  // Wrong
@@ -259,7 +354,11 @@ In general, the same style as for C++
  Item {
 
      property var counter: 0
-     property var _data: null
+
+     QObject {
+         id: prv
+         property var data: null
+     }
 
      ...
  }
