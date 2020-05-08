@@ -21,4 +21,3 @@ If you see an area that could benefit from improvement, then jump right in!
 * [How to translate](HowToTranslate.md)
 * [How to build and install](HowToBuildAndInstall.md)
 * [How to contribute](HowToContribute.md)
-* [How to write documentation](HowToWriteDocs.md)
