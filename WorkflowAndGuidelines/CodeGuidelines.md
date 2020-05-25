@@ -173,7 +173,8 @@ private:
  }
 
  // Correct
- class Counter {
+ class Counter
+ {
  ...
  private:
      int m_count = 0;
