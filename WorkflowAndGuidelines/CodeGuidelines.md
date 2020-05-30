@@ -36,8 +36,10 @@ MuseScore code style and conventions are based on the [Qt code style](https://wi
  }
 
  // Correct
- namespace mu::cool {
+ namespace mu {
+ namespace cool {
      ...
+ }
  }
 ```
 
@@ -73,17 +75,15 @@ The class declaration should be in this order:
 #define MU_COOL_RECT_H
 
 #include <QObject>
+#include <QRect>
 
-class QRect;
-
-namespace mu::cool {
-
+namespace mu {
+namespace cool {
 class Rect : public QObject
 {
     Q_OBJECT
-
 public:
-    Rect(QObject* parent = nullptr);
+    explicit Rect(QObject* parent = nullptr);
     ~Rect();
 
     int width() const;
@@ -99,15 +99,91 @@ signals:
     void squareChanged(int sq);
 
 private:
-    int calcSquare(int w, int h) const;
+    void updateSquare();
 
     QRect m_rect;
+    int m_square = 0;
 };
-
+}
 }
 
 #endif // MU_COOL_RECT_H
 
+```
+
+```C++
+// Correct
+
+{LICENCE}
+
+#include "rect.h"
+
+Rect::Rect(QObject* parent)
+    : QObject(parent)
+{
+}
+
+Rect::~Rect()
+{
+}
+
+void Rect::updateSquare()
+{
+    int s = width() * height();
+    if (s != m_square) {
+        m_square = s;
+        emit squareChanged(s);
+    }
+}
+
+void Rect::setWidth(int w)
+{
+    m_rect.setWidth(w);
+    updateSquare();
+}
+
+int Rect::width() const
+{
+    return m_rect.width();
+}
+
+void Rect::setHeight(int h)
+{
+    m_rect.setHeight(h);
+    updateSquare();
+}
+
+int Rect::height() const
+{
+    return m_rect.height();
+}
+
+int Rect::square() const
+{
+    return m_square;
+}
+
+```
+
+* If there is initialization in constructors, always put a colon on a new line
+
+```C++
+// Wrong
+ClassName::ClassName(int arg) : Base(), m_param(arg) {}
+
+ClassName::ClassName(int arg) : Base(), m_param(arg)
+{}
+
+ClassName::ClassName(int arg) :
+    Base(), m_param(arg)
+{
+}
+
+// Correct
+ClassName::ClassName(int arg)
+    : Base(), m_param(arg)
+{  
+}
 ```
 
 ### Declaring variables

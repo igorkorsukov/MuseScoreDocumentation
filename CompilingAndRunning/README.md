@@ -9,7 +9,7 @@ This generic guide covers the steps to build MuseScore that are the same on all 
   * [Windows - Visual Studio](WindowsVS_Compiling.md)
   * [Windows - MSVC with Qt Creator](WindowsMsvcQtc_Compiling.md)
 * [Mac](Mac_Compiling.md)
-* [Linux & BSD](LinuxCompiling.md)
+* [Linux & BSD](Linux_Compiling.md)
 
 ## Prerequisites
 
