@@ -10,3 +10,4 @@ Modules interact with each other through interfaces using dependency injection, 
 * [AppShell](AppShell.md)
 * [Interact workflow](InteractWorkflow.md)
   * [Actions](Actions.md)
+* [Channels and Notifications](ChannelsAndNotifications.md)

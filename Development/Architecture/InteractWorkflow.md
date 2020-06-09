@@ -85,3 +85,34 @@ void Notation::padNote(const Pad& pad)
     m_inputStateChanged.notify();
 }
 ```
+
+Subscription and notification processing
+
+```cpp
+void NotationToolBarModel::onNotationChanged()
+{
+    std::shared_ptr<INotation> notation = globalContext()->currentNotation();
+
+    //! NOTE Unsubscribe from previous notation, if it was
+    m_notationChanged.resetOnNotify(this);
+    m_inputStateChanged.resetOnNotify(this);
+
+    if (notation) {
+        m_inputStateChanged = notation->inputStateChanged();
+        m_inputStateChanged.onNotify(this, [this]() {
+            updateState();
+        });
+    }
+
+    updateState();
+}
+
+void NotationPaintView::open()
+{
+    ...
+    m_notation->inputStateChanged().onNotify(this, [this]() {
+        onInputStateChanged();
+    });
+}
+
+```
