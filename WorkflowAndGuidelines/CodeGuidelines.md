@@ -62,9 +62,10 @@ The class declaration should be in this order:
 8. public methods (first constructor and destructor if they public)
 9. public slots
 10. signals
-11. private slots
-12. private methods
-13. private members
+11. protected
+12. private slots
+13. private methods
+14. private members
 
 ```C++
 
