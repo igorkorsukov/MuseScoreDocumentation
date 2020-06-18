@@ -195,6 +195,7 @@ ClassName::ClassName(int arg)
 * Wait when declaring a variable until it is needed
 * For pointers or references, no space between the '*' or '&' and type(__different from Qt__)
 * Always initialize the variable with the initial value.
+* Pointers initialize `nullptr`, do not use `0`.
 
 ```C++
  // Wrong
