@@ -48,7 +48,7 @@ MuseScore code style and conventions are based on the [Qt code style](https://wi
 * Header files have the extension `.h`, files implementation `.cpp`
 * Each header and implementation file must have a license text at the top
 * The header file must have a guard named `MU_{MODULE}_{CLASSNAME}_H`
-* Only declaration should be in the header files, avoid placing the implementation in header files
+* Only declaration should be in the header files, avoid placing the implementation in header files, except when necessary, such as function-template definitions.
 
 The class declaration should be in this order:  
 
