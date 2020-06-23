@@ -5,6 +5,7 @@
   * [Actions](Actions.md)
 * [Channels and Notifications](ChannelsAndNotifications.md)
 * [Settings and Configuration](SettingsAndConfiguration.md)
+* [Error handling](ErrorHandling.md)
 
 ## General
 
