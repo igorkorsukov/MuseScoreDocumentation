@@ -5,16 +5,12 @@ Treat documentation with the same responsibility as code.
 
 ## Where and what documents
 
-Prefer to create new directories for new sections and new files for separate topics so that the documentation structure is clear and one aspect is described in each file.
+If you want to know where to start, or how to build, or how to translate and much more, then look [Developers' handbook](https://musescore.org/en/handbook/developers-handbook)
+
+This is the place for code documentation - code style, architecture, patterns, etc.
+
+When writing code documentation prefer to create new directories for new sections and new files for separate topics so that the documentation structure is clear and one aspect is described in each file.
 Each directory (section) must contain a `README.md` file, which is the root of this section.
-
-* [Getting started](GettingStarted/README.md) - about where to start and a description of the general process, in what order what needs to be done and where to get detailed information.
-
-* [Compiling and Running](CompilingAndRunning/README.md) - detailed information on how to compile the project for different platforms and configure IDE.
-
-* [Workflow and guidelines](WorkflowAndGuidelines/README.md) - description of workflow and guidelines - guidelines for writing code, documentation, the process of creating pull requests, work with the tracker, etc.
-
-* [Development](Development/README.md) - description of architecture, relationships, patterns, specifications, interfaces, implementation details, etc.
 
 ## Text
 
