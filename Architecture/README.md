@@ -6,6 +6,7 @@
 * [Channels and Notifications](ChannelsAndNotifications.md)
 * [Settings and Configuration](SettingsAndConfiguration.md)
 * [Error handling](ErrorHandling.md)
+* [Launcher and user interaction](LauncherAndInteractive.md)
 
 ## General
 
