@@ -1,6 +1,8 @@
 # Architecture
 
 * [AppShell](AppShell.md)
+* [Modularity](Modularity.md)
+  * [Dependency injection](DependencyInjection.md)
 * [Interact workflow](InteractWorkflow.md)
   * [Actions](Actions.md)
 * [Channels and Notifications](ChannelsAndNotifications.md)
